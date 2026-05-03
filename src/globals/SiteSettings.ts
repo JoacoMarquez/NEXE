@@ -1,10 +1,14 @@
 import type { GlobalConfig } from 'payload'
+import { revalidateGlobal } from '../hooks/revalidatePath'
 
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
   label: 'Configuración del Sitio',
   admin: {
     group: 'Configuración',
+  },
+  hooks: {
+    afterChange: [revalidateGlobal(['/nosotros', '/servicios', '/contacto'])],
   },
   fields: [
     {

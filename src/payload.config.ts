@@ -18,6 +18,13 @@ import { ContactoPage } from './globals/ContactoPage'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+const allowedOrigins = [
+  process.env.NEXT_PUBLIC_SERVER_URL,
+  'https://nexeestudio.com',
+  'https://www.nexeestudio.com',
+  'http://localhost:3000',
+].filter((origin): origin is string => Boolean(origin))
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -30,6 +37,8 @@ export default buildConfig({
   },
   collections: [Users, Media, Services, Team, Submissions],
   globals: [SiteSettings, NosotrosPage, ServiciosPage, ContactoPage],
+  cors: allowedOrigins,
+  csrf: allowedOrigins,
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || 'default-secret-change-me',
   typescript: {

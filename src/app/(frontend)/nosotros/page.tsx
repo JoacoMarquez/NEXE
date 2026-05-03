@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   title: 'Nosotros',
 }
 
+export const revalidate = 60
+
 async function getData() {
   try {
     const payload = await getPayload({ config })

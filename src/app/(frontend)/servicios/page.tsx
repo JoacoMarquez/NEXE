@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   title: 'Servicios',
 }
 
+export const revalidate = 60
+
 async function getData() {
   try {
     const payload = await getPayload({ config })

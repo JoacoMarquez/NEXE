@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   title: 'Contacto',
 }
 
+export const revalidate = 60
+
 async function getData() {
   try {
     const payload = await getPayload({ config })

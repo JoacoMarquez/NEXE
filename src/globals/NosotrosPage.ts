@@ -1,11 +1,15 @@
 import type { GlobalConfig } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { revalidateGlobal } from '../hooks/revalidatePath'
 
 export const NosotrosPage: GlobalConfig = {
   slug: 'nosotros-page',
   label: 'Página — Nosotros',
   admin: {
     group: 'Páginas',
+  },
+  hooks: {
+    afterChange: [revalidateGlobal(['/nosotros'])],
   },
   fields: [
     {

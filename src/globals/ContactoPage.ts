@@ -1,10 +1,14 @@
 import type { GlobalConfig } from 'payload'
+import { revalidateGlobal } from '../hooks/revalidatePath'
 
 export const ContactoPage: GlobalConfig = {
   slug: 'contacto-page',
   label: 'Página — Contacto',
   admin: {
     group: 'Páginas',
+  },
+  hooks: {
+    afterChange: [revalidateGlobal(['/contacto'])],
   },
   fields: [
     {
