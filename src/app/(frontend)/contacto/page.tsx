@@ -26,113 +26,162 @@ export default async function ContactoPage() {
   const { page, settings } = await getData()
 
   const heroTitle = page?.heroTitle ?? 'Contacto y Asesoramiento'
-  const heroSubtitle = page?.heroSubtitle ?? 'Contanos en qué podemos ayudarte. Te respondemos a la brevedad.'
+  const heroSubtitle =
+    page?.heroSubtitle ?? 'Contanos en qué podemos ayudarte. Te respondemos a la brevedad.'
   const formTitle = page?.formTitle ?? 'Envianos una consulta'
   const successMessage = page?.successMessage as string | undefined
 
   return (
     <>
       {/* Hero */}
-      <section className="bg-navy text-white pt-32 pb-20 px-6">
-        <div className="max-w-4xl mx-auto">
-          <p className="tag text-blue-light mb-4">Hablemos</p>
-          <h1 className="text-4xl md:text-6xl font-black leading-tight mb-6">{heroTitle}</h1>
-          <p className="text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">{heroSubtitle}</p>
+      <section className="bg-navy text-white pt-32 pb-24 md:pt-40 md:pb-32">
+        <div className="container-nexe">
+          <p className="tag text-blue-light/90 mb-6">Hablemos</p>
+          <h1 className="text-display font-display font-extrabold text-white text-balance leading-[0.95]">
+            {heroTitle}
+          </h1>
+          <p className="text-lead text-white/75 max-w-2xl mt-8 leading-relaxed">
+            {heroSubtitle}
+          </p>
         </div>
       </section>
 
       {/* Contact content */}
-      <section className="py-20 px-6">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Info */}
-          <div className="lg:col-span-1">
-            <p className="tag mb-6">Datos de contacto</p>
-            <div className="space-y-6">
-              {settings?.email && (
-                <div>
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">Email</p>
-                  <a
-                    href={`mailto:${settings.email}`}
-                    className="text-navy hover:text-blue transition-colors font-medium"
-                  >
-                    {settings.email}
-                  </a>
-                </div>
-              )}
-              {settings?.phone && (
-                <div>
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">Teléfono / WhatsApp</p>
-                  <a
-                    href={`tel:${settings.phone}`}
-                    className="text-navy hover:text-blue transition-colors font-medium"
-                  >
-                    {settings.phone}
-                  </a>
-                </div>
-              )}
-              {settings?.address && (
-                <div>
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">Dirección</p>
-                  <p className="text-navy font-medium">{settings.address}</p>
-                </div>
-              )}
-              {settings?.city && (
-                <div>
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-1">Ciudad</p>
-                  <p className="text-navy font-medium">{settings.city}</p>
-                </div>
-              )}
+      <section className="section">
+        <div className="container-nexe">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            {/* Info column */}
+            <aside className="lg:col-span-4">
+              <p className="tag mb-5">Datos de contacto</p>
+              <h2 className="text-h2-fluid font-display font-bold text-navy text-balance leading-[1.15] mb-10">
+                Estamos a un mensaje de distancia.
+              </h2>
 
-              {(settings?.linkedin || settings?.instagram || settings?.facebook) && (
-                <div>
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Redes</p>
-                  <div className="flex flex-col gap-2">
-                    {settings?.linkedin && (
+              <dl className="space-y-7">
+                {settings?.email && (
+                  <div>
+                    <dt className="text-xs font-sans font-semibold text-gray-500 uppercase tracking-widest mb-2">
+                      Email
+                    </dt>
+                    <dd>
                       <a
-                        href={settings.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue hover:underline text-sm"
+                        href={`mailto:${settings.email}`}
+                        className="text-navy hover:text-blue text-base font-medium transition-colors no-underline"
                       >
-                        LinkedIn →
+                        {settings.email}
                       </a>
-                    )}
-                    {settings?.instagram && (
-                      <a
-                        href={settings.instagram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue hover:underline text-sm"
-                      >
-                        Instagram →
-                      </a>
-                    )}
-                    {settings?.facebook && (
-                      <a
-                        href={settings.facebook}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue hover:underline text-sm"
-                      >
-                        Facebook →
-                      </a>
-                    )}
+                    </dd>
                   </div>
-                </div>
-              )}
-            </div>
+                )}
+                {settings?.phone && (
+                  <div>
+                    <dt className="text-xs font-sans font-semibold text-gray-500 uppercase tracking-widest mb-2">
+                      Teléfono / WhatsApp
+                    </dt>
+                    <dd>
+                      <a
+                        href={`tel:${settings.phone}`}
+                        className="text-navy hover:text-blue text-base font-medium transition-colors no-underline"
+                      >
+                        {settings.phone}
+                      </a>
+                    </dd>
+                  </div>
+                )}
+                {settings?.address && (
+                  <div>
+                    <dt className="text-xs font-sans font-semibold text-gray-500 uppercase tracking-widest mb-2">
+                      Dirección
+                    </dt>
+                    <dd className="text-navy text-base font-medium">{settings.address}</dd>
+                  </div>
+                )}
+                {settings?.city && (
+                  <div>
+                    <dt className="text-xs font-sans font-semibold text-gray-500 uppercase tracking-widest mb-2">
+                      Ciudad
+                    </dt>
+                    <dd className="text-navy text-base font-medium">{settings.city}</dd>
+                  </div>
+                )}
 
-            <div className="mt-10 p-6 bg-navy/5 border-l-4 border-blue rounded-r-sm">
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Respondemos todas las consultas en un plazo máximo de <strong className="text-navy">24 horas hábiles</strong>.
-              </p>
-            </div>
-          </div>
+                {(settings?.linkedin || settings?.instagram || settings?.facebook) && (
+                  <div>
+                    <dt className="text-xs font-sans font-semibold text-gray-500 uppercase tracking-widest mb-3">
+                      Redes
+                    </dt>
+                    <dd className="flex flex-col gap-2">
+                      {settings?.linkedin && (
+                        <a
+                          href={settings.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-blue hover:text-navy text-sm font-medium no-underline group transition-colors w-fit"
+                        >
+                          LinkedIn
+                          <span
+                            aria-hidden="true"
+                            className="transition-transform duration-200 group-hover:translate-x-0.5"
+                          >
+                            →
+                          </span>
+                        </a>
+                      )}
+                      {settings?.instagram && (
+                        <a
+                          href={settings.instagram}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-blue hover:text-navy text-sm font-medium no-underline group transition-colors w-fit"
+                        >
+                          Instagram
+                          <span
+                            aria-hidden="true"
+                            className="transition-transform duration-200 group-hover:translate-x-0.5"
+                          >
+                            →
+                          </span>
+                        </a>
+                      )}
+                      {settings?.facebook && (
+                        <a
+                          href={settings.facebook}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-blue hover:text-navy text-sm font-medium no-underline group transition-colors w-fit"
+                        >
+                          Facebook
+                          <span
+                            aria-hidden="true"
+                            className="transition-transform duration-200 group-hover:translate-x-0.5"
+                          >
+                            →
+                          </span>
+                        </a>
+                      )}
+                    </dd>
+                  </div>
+                )}
+              </dl>
 
-          {/* Form */}
-          <div className="lg:col-span-2">
-            <p className="tag mb-6">{formTitle}</p>
-            <ContactForm successMessage={successMessage} />
+              <div className="mt-12 p-6 bg-marfil-dark rounded-xl">
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  Respondemos todas las consultas en un plazo máximo de{' '}
+                  <strong className="text-navy font-semibold">24 horas hábiles</strong>.
+                </p>
+              </div>
+            </aside>
+
+            {/* Form column */}
+            <div className="lg:col-span-8">
+              <div className="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-nexe-sm">
+                <p className="tag mb-3">Formulario</p>
+                <h2 className="text-h2-fluid font-display font-bold text-navy mb-8 leading-[1.15]">
+                  {formTitle}
+                </h2>
+                <ContactForm successMessage={successMessage} />
+              </div>
+            </div>
           </div>
         </div>
       </section>
