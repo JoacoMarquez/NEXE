@@ -1,5 +1,6 @@
 import { buildConfig } from 'payload'
 import { postgresAdapter } from '@payloadcms/db-postgres'
+import { resendAdapter } from '@payloadcms/email-resend'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import sharp from 'sharp'
 import path from 'path'
@@ -53,4 +54,9 @@ export default buildConfig({
   }),
   sharp,
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
+  email: resendAdapter({
+    defaultFromAddress: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
+    defaultFromName: 'NEXE Estudio',
+    apiKey: process.env.RESEND_API_KEY || '',
+  }),
 })
