@@ -1,6 +1,7 @@
 import React from 'react'
 import type { Metadata } from 'next'
 import { Inter, Archivo, JetBrains_Mono } from 'next/font/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import './globals.css'
@@ -37,6 +38,8 @@ export const metadata: Metadata = {
 }
 
 export default function FrontendLayout({ children }: { children: React.ReactNode }) {
+  const gaId = process.env.NEXT_PUBLIC_GA_ID
+
   return (
     <html
       lang="es"
@@ -47,6 +50,7 @@ export default function FrontendLayout({ children }: { children: React.ReactNode
         <main>{children}</main>
         <Footer />
       </body>
+      {gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
   )
 }
