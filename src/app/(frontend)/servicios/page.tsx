@@ -171,7 +171,7 @@ export default async function ServiciosPage() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
             <div className="max-w-2xl">
               <p className="tag text-blue-light/90 mb-5">¿Buscás algo más específico?</p>
-              <h2 className="text-h1-fluid font-display font-bold text-balance leading-[1.1]">
+              <h2 className="text-h1-fluid font-display font-bold text-white text-balance leading-[1.1]">
                 Hablemos y encontramos la solución a medida.
               </h2>
             </div>
