@@ -234,7 +234,7 @@ export default async function NosotrosPage() {
         <div className="container-nexe">
           <div className="max-w-3xl">
             <p className="tag text-blue-light/90 mb-5">Próximo paso</p>
-            <h2 className="text-h1-fluid font-display font-bold text-balance leading-[1.1] mb-6">
+            <h2 className="text-h1-fluid font-display font-bold text-white text-balance leading-[1.1] mb-6">
               ¿Trabajamos juntos?
             </h2>
             <p className="text-lead text-white/70 max-w-xl leading-relaxed mb-10">

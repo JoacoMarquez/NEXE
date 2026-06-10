@@ -16,6 +16,9 @@ export default async function Footer() {
   const settings = await getSiteSettings()
   const year = new Date().getFullYear()
 
+  const email = settings?.email ?? 'jm@nexeestudio.com'
+  const phone = settings?.phone ?? '+598 99 332 717'
+
   return (
     <footer className="bg-navy text-white">
       <div className="container-nexe py-20 md:py-24">
@@ -71,22 +74,18 @@ export default async function Footer() {
               Contacto
             </p>
             <div className="flex flex-col gap-2.5">
-              {settings?.email && (
-                <a
-                  href={`mailto:${settings.email}`}
-                  className="text-base text-white/70 hover:text-white transition-colors w-fit"
-                >
-                  {settings.email}
-                </a>
-              )}
-              {settings?.phone && (
-                <a
-                  href={`tel:${settings.phone}`}
-                  className="text-base text-white/70 hover:text-white transition-colors w-fit"
-                >
-                  {settings.phone}
-                </a>
-              )}
+              <a
+                href={`mailto:${email}`}
+                className="text-base text-white/70 hover:text-white transition-colors w-fit"
+              >
+                {email}
+              </a>
+              <a
+                href={`tel:${phone.replace(/\s/g, '')}`}
+                className="text-base text-white/70 hover:text-white transition-colors w-fit"
+              >
+                {phone}
+              </a>
               {settings?.address && (
                 <p className="text-base text-white/70">{settings.address}</p>
               )}

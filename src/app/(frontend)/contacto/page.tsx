@@ -31,6 +31,9 @@ export default async function ContactoPage() {
   const formTitle = page?.formTitle ?? 'Envianos una consulta'
   const successMessage = page?.successMessage as string | undefined
 
+  const email = settings?.email ?? 'jm@nexeestudio.com'
+  const phone = settings?.phone ?? '+598 99 332 717'
+
   return (
     <>
       {/* Hero */}
@@ -58,36 +61,32 @@ export default async function ContactoPage() {
               </h2>
 
               <dl className="space-y-7">
-                {settings?.email && (
-                  <div>
-                    <dt className="text-xs font-sans font-semibold text-gray-500 uppercase tracking-widest mb-2">
-                      Email
-                    </dt>
-                    <dd>
-                      <a
-                        href={`mailto:${settings.email}`}
-                        className="text-navy hover:text-blue text-base font-medium transition-colors no-underline"
-                      >
-                        {settings.email}
-                      </a>
-                    </dd>
-                  </div>
-                )}
-                {settings?.phone && (
-                  <div>
-                    <dt className="text-xs font-sans font-semibold text-gray-500 uppercase tracking-widest mb-2">
-                      Teléfono / WhatsApp
-                    </dt>
-                    <dd>
-                      <a
-                        href={`tel:${settings.phone}`}
-                        className="text-navy hover:text-blue text-base font-medium transition-colors no-underline"
-                      >
-                        {settings.phone}
-                      </a>
-                    </dd>
-                  </div>
-                )}
+                <div>
+                  <dt className="text-xs font-sans font-semibold text-gray-500 uppercase tracking-widest mb-2">
+                    Email
+                  </dt>
+                  <dd>
+                    <a
+                      href={`mailto:${email}`}
+                      className="text-navy hover:text-blue text-base font-medium transition-colors no-underline"
+                    >
+                      {email}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-xs font-sans font-semibold text-gray-500 uppercase tracking-widest mb-2">
+                    Teléfono / WhatsApp
+                  </dt>
+                  <dd>
+                    <a
+                      href={`tel:${phone.replace(/\s/g, '')}`}
+                      className="text-navy hover:text-blue text-base font-medium transition-colors no-underline"
+                    >
+                      {phone}
+                    </a>
+                  </dd>
+                </div>
                 {settings?.address && (
                   <div>
                     <dt className="text-xs font-sans font-semibold text-gray-500 uppercase tracking-widest mb-2">
